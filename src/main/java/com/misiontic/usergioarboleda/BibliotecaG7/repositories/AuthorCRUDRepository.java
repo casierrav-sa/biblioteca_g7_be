@@ -1,4 +1,7 @@
 package com.misiontic.usergioarboleda.BibliotecaG7.repositories;
 
-public interface AuthorCRUDRepository {
+import com.misiontic.usergioarboleda.BibliotecaG7.models.Author;
+import org.springframework.data.repository.CrudRepository;
+
+public interface AuthorCRUDRepository extends CrudRepository<Author, Integer> {
 }
