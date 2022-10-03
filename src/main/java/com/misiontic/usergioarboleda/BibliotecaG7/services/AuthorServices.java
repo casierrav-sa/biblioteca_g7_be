@@ -13,7 +13,7 @@ public class AuthorServices {
     @Autowired
     private AuthorRepository authorRepository;
 
-    public List<Author> getAll(){
+    public List<Author> getAllAuthors(){
         return authorRepository.getAll();
     }
 
@@ -21,11 +21,14 @@ public class AuthorServices {
         return authorRepository.getAuthor(code);
     }
 
-    public Author insert(Author author){
+    public Author insertAuthor(Author author){
         if(author.getCode() != null){
             Optional<Author> temp = authorRepository.getAuthor( author.getCode() );
             if(temp.isEmpty())
-                return authorRepository.save(author);
+                if(author.getName() != null && author.getLastname() != null)
+                    return authorRepository.save(author);
+                else
+                    return author;
             else
                 return author;
         }
@@ -33,13 +36,12 @@ public class AuthorServices {
             return author;
     }
 
-    public Author update(Author author){
+    public Author updateAuthor(Author author){
         if(author.getCode() != null){
             Optional<Author> temp = authorRepository.getAuthor( author.getCode() );
             if( !temp.isEmpty() ){
                 if(author.getName() != null)
                     temp.get().setName( author.getName() );
-
                 if(author.getLastname() != null)
                     temp.get().setLastname( author.getLastname() );
 
@@ -52,7 +54,11 @@ public class AuthorServices {
             return author;
     }
 
-    public void delete(Author author){
-
+    public Boolean deleteAuthor(int code){
+        Boolean success = authorRepository.getAuthor(code).map(author -> {
+            authorRepository.delete(author);
+            return true;
+        }).orElse(false);
+        return success;
     }
 }
