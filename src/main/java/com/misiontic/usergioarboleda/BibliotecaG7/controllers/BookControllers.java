@@ -3,10 +3,7 @@ package com.misiontic.usergioarboleda.BibliotecaG7.controllers;
 import com.misiontic.usergioarboleda.BibliotecaG7.models.Book;
 import com.misiontic.usergioarboleda.BibliotecaG7.services.BookServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,19 +24,23 @@ public class BookControllers {
         return bookServices.getBookByDates(start, end);
     }
 
-    public Optional<Book> getBook(int isbn){
+    @GetMapping("/{isbn}")
+    public Optional<Book> getBook(@PathVariable("isbn") int isbn){
         return bookServices.getBook(isbn);
     }
 
-    public Book insertBook(Book book){
+    @PostMapping("/insert")
+    public Book insertBook(@RequestBody Book book){
         return bookServices.insertBook(book);
     }
 
-    public Book updateBook(Book book){
+    @PutMapping("/update")
+    public Book updateBook(@RequestBody Book book){
         return bookServices.updateBook(book);
     }
 
-    public Boolean deleteBook(int isbn){
+    @DeleteMapping("/delete/{isbn}")
+    public Boolean deleteBook(@PathVariable("isbn") int isbn){
         return bookServices.deleteBook(isbn);
     }
 }
