@@ -25,18 +25,6 @@ public class Editorial implements Serializable {
     @JsonIgnoreProperties("editorial_fk")
     private List<Book> books;
 
-    /**
-     *
-     * @param id
-     * @param name
-     * @param country
-     */
-    public Editorial(Integer id, String name, String country) {
-        this.id      = id;
-        this.name    = name;
-        this.country = country;
-    }
-
     // ============== Getters & Setters ============== //
     /**
      *

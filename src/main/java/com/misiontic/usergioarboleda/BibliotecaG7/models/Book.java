@@ -34,39 +34,6 @@ public class Book implements Serializable  {
     )
     private Set<Author> authors;
 
-    /**
-     *
-     * @param isbn
-     * @param title
-     * @param register_date
-     * @param year
-     * @param editorial_fk
-     */
-    public Book(Integer isbn, String title, String register_date, Integer year, Editorial editorial_fk) {
-        this.isbn = isbn;
-        this.title = title;
-        this.register_date = register_date;
-        this.year = year;
-        this.editorial_fk = editorial_fk;
-    }
-
-    /**
-     *
-     * @param isbn
-     * @param title
-     * @param register_date
-     * @param year
-     * @param editorial_fk
-     * @param authors
-     */
-    public Book(Integer isbn, String title, String register_date, Integer year, Editorial editorial_fk, Set<Author> authors) {
-        this.isbn          = isbn;
-        this.title         = title;
-        this.register_date = register_date;
-        this.year          = year;
-        this.editorial_fk  = editorial_fk;
-        this.authors       = authors;
-    }
 
     // ============== Getters & Setters ============== //
 
