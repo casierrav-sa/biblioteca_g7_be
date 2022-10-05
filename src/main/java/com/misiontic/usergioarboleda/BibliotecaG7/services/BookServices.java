@@ -50,6 +50,8 @@ public class BookServices {
                     temp.get().setAuthors( book.getAuthors() );
                 return bookRepository.save( temp.get() );
             }
+            else
+                return book;
         }
         else
             return book;
